@@ -8,7 +8,7 @@
 module.exports = appInfo => {
   /**
    * built-in config
-   * @type {Egg.EggAppConfig}
+   * @type {}
    **/
   const config = {};
 
@@ -16,15 +16,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1554531137740_6927';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = [ 'errorHandler' ];
 
-  // add your user config here
-  const userConfig = {
-    // myAppName: 'egg',
-  };
-
-  return {
-    ...config,
-    ...userConfig,
-  };
+  return config;
 };
