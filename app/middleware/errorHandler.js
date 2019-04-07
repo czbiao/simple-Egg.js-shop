@@ -19,10 +19,6 @@ module.exports = () => {
       };
       if (status === 422) {
         ctx.body.detail = err.errors;
-        // const res = {};
-        // res.code = 0;
-        // res.msg = '信息不完善';
-        // ctx.body = res;
       }
       ctx.status = status;
     }
