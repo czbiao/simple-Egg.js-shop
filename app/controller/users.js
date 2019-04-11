@@ -1,6 +1,6 @@
 'use strict';
 
-const Controller = require('egg').Controller;
+const BaseController = require('./base');
 
 function toInt(str) {
   if (typeof str === 'number') return str;
@@ -8,11 +8,20 @@ function toInt(str) {
   return parseInt(str, 10) || 0;
 }
 
-class UserController extends Controller {
+class UserController extends BaseController {
+  constructor(ctx) {
+    super(ctx);
+    this.service = ctx.service.user;
+  }
+
+  // async index() {
+  //   const ctx = this.ctx;
+  //   const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset) };
+  //   ctx.body = await ctx.model.User.findAll(query);
+  // }
+
   async index() {
-    const ctx = this.ctx;
-    const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset) };
-    ctx.body = await ctx.model.User.findAll(query);
+    await this.list();
   }
 
   async show() {
